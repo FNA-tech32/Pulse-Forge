@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse Forge | Member Portal & Training Hub</title>
+  <meta name="description" content="Access the Pulse Forge Member Portal to manage your training sessions, review membership benefits, and connect with elite coaches.">
+  <link rel="stylesheet" href="portal.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Portal-specific enhancements */
+    .portal-back-link {
+      color: #ff0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .portal-back-link:hover {
+      transform: translateX(-4px);
+    }
+    .contact-banner {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 1000px;
+      text-align: center;
+    }
+    .contact-banner h3 {
+      color: #ff0;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .contact-banner p {
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+    .channel-badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .channel-badge {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 10px 18px;
+      border-radius: 25px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .channel-badge:hover {
+      border-color: #ff0;
+      color: #ff0;
+      background: #222;
+    }
+    .channel-badge.alt {
+      border-color: rgba(255, 255, 0, 0.4);
+      color: #ff0;
+    }
+    .plan-detail-list {
+      text-align: left;
+      margin: 15px 0 20px 20px;
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .modal-btn {
+      display: inline-block;
+      padding: 12px 26px;
+      background: #ff0;
+      color: #000;
+      font-weight: 700;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 15px;
+      transition: background 0.2s;
+    }
+    .modal-btn:hover {
+      background: #fff;
+    }
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #222;
+      color: #777;
+      font-size: 13px;
+    }
+    .footer-col h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .footer-col a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .footer-col a:hover {
+      color: #ff0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">PULSE<span>FORGE</span></div>
+
+      <!-- Hamburger Button -->
+      <div class="hamburger" id="hamburger">☰</div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">← Back to Main Site</a></li>
+        <li><a href="#plans">Membership Plans</a></li>
+        <li><a href="#trainers">Coaches</a></li>
+        <li><a href="#support">Support & Helpdesk</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Portal Hero -->
+  <section class="portal-hero">
+    <div>
+      <a href="index.html" class="portal-back-link">← Return to Pulse Forge Homepage</a>
+      <h1>Pulse Forge Member Portal</h1>
+      <p>Manage your fitness journey, browse training programs, book coach consultations, and access support.</p>
+    </div>
+  </section>
+
+  <!-- Membership Plans -->
+  <section id="plans">
+    <h2>Select Your Membership Plan</h2>
+    <div class="plans">
+      
+      <div class="plan" onclick="openPlanModal('Free Trial', '$0', 'Includes a complimentary 1-day pass, gym orientation, and a 30-minute fitness evaluation with a master trainer.')">
+        <h3>Free Trial</h3>
+        <p style="font-size: 28px; font-weight: 700; color: #ff0; margin-bottom: 10px;">$0</p>
+        <p>1-Day access pass with personal trainer guidance.</p>
+        <span style="font-size: 12px; color: #ff0; font-weight: 600;">Click to view details</span>
+      </div>
+
+      <div class="plan" onclick="openPlanModal('Daytime Pass', '$49/mo', 'Full access to cardio, functional, and strength zones during off-peak daytime hours (8:00 AM – 4:00 PM). Perfect for flexible schedules.')">
+        <h3>Daytime Pass</h3>
+        <p style="font-size: 28px; font-weight: 700; color: #ff0; margin-bottom: 10px;">$49<span style="font-size: 14px; color: #888;">/mo</span></p>
+        <p>Unlimited off-peak daytime training access.</p>
+        <span style="font-size: 12px; color: #ff0; font-weight: 600;">Click to view details</span>
+      </div>
+
+      <div class="plan" onclick="openPlanModal('Pulse 24/7', '$85/mo', 'Unlimited 24/7/365 access to all 4 fitness zones, free locker storage, mobile app workout tracking, and bi-weekly recovery sessions.')">
+        <h3>Pulse 24/7</h3>
+        <p style="font-size: 28px; font-weight: 700; color: #ff0; margin-bottom: 10px;">$85<span style="font-size: 14px; color: #888;">/mo</span></p>
+        <p>Round-the-clock unrestricted gym access.</p>
+        <span style="font-size: 12px; color: #ff0; font-weight: 600;">Click to view details</span>
+      </div>
+
+      <div class="plan" onclick="openPlanModal('Elite Forge', '$119/mo', 'Our signature all-inclusive plan. Unrestricted 24/7 access + 4 monthly 1-on-1 personal coaching sessions, nutrition consultation, and priority zone reservations.')">
+        <h3>Elite Forge</h3>
+        <p style="font-size: 28px; font-weight: 700; color: #ff0; margin-bottom: 10px;">$119<span style="font-size: 14px; color: #888;">/mo</span></p>
+        <p>24/7 full access + dedicated coach & custom nutrition.</p>
+        <span style="font-size: 12px; color: #ff0; font-weight: 600;">Click to view details</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trainers Section -->
+  <section id="trainers">
+    <h2>Book a Coach Consultation</h2>
+    <div class="trainer-grid">
+      
+      <div class="trainer" onclick="openTrainerModal('Victoria Shurpik', 'Head Strength & Conditioning Coach', 'tr1.jpeg', 'Specializes in barbell mechanics, functional hypertrophy, and athletic power development. Over 9 years of competitive training experience.')">
+        <img src="tr1.jpeg" alt="Victoria Shurpik">
+        <p><strong>Victoria Shurpik</strong></p>
+        <p style="color: #ff0; font-size: 13px;">Head Strength Coach</p>
+      </div>
+
+      <div class="trainer" onclick="openTrainerModal('Elizabeth Lavrinenko', 'HIIT & Athletic Performance Coach', 'tr2.jpeg', 'Expert in metabolic conditioning, agility circuits, and endurance optimization for athletes and aspiring fitness enthusiasts.')">
+        <img src="tr2.jpeg" alt="Elizabeth Lavrinenko">
+        <p><strong>Elizabeth Lavrinenko</strong></p>
+        <p style="color: #ff0; font-size: 13px;">HIIT & Performance</p>
+      </div>
+
+      <div class="trainer" onclick="openTrainerModal('Ivan Gladkikh', 'Powerlifting & Hypertrophy Specialist', 'tr3.jpeg', 'Master of progressive overload, biomechanics, and maximum strength protocols. Certified powerlifting coach.')">
+        <img src="tr3.jpeg" alt="Ivan Gladkikh">
+        <p><strong>Ivan Gladkikh</strong></p>
+        <p style="color: #ff0; font-size: 13px;">Powerlifting Specialist</p>
+      </div>
+
+      <div class="trainer" onclick="openTrainerModal('Lyudmila Sabilo', 'Mobility & Functional Recovery Coach', 'tr4.jpeg', 'Specializes in post-workout myofascial release, joint mobility restoration, and functional injury prevention routines.')">
+        <img src="tr4.jpeg" alt="Lyudmila Sabilo">
+        <p><strong>Lyudmila Sabilo</strong></p>
+        <p style="color: #ff0; font-size: 13px;">Mobility & Recovery</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Direct & Alternative Support Banner -->
+  <section id="support" style="padding-top: 0;">
+    <div class="contact-banner">
+      <h3>Need Direct Assistance?</h3>
+      <p>Connect with our member desk or alternative support channels for instant answers.</p>
+      <div class="channel-badges">
+        <a href="tel:+18007853674" class="channel-badge">📞 Call: +1 (800) 785-3674</a>
+        <a href="https://wa.me/15557853674" target="_blank" rel="noopener noreferrer" class="channel-badge alt">💬 WhatsApp Desk: +1 (555) 785-3674</a>
+        <a href="tel:+15559482831" class="channel-badge alt">🚨 24/7 Member Helpline: +1 (555) 948-2831</a>
+        <a href="mailto:contact@pulseforgegym.com" class="channel-badge">✉️ Primary Email: contact@pulseforgegym.com</a>
+        <a href="mailto:support@pulseforgegym.com" class="channel-badge alt">✉️ Alternative Support: support@pulseforgegym.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Plan Details -->
+  <div class="modal" id="planModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('planModal')">&times;</span>
+      <h3 id="modalPlanTitle" style="color: #ff0; font-size: 24px; margin-bottom: 10px;">Plan Title</h3>
+      <p id="modalPlanPrice" style="font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 15px;">$0</p>
+      <p id="modalPlanDesc" style="color: #ccc; margin-bottom: 20px; font-size: 15px;"></p>
+      <a href="index.html#contact" class="modal-btn">Inquire / Enroll Now</a>
+    </div>
+  </div>
+
+  <!-- Modal for Trainer Details -->
+  <div class="modal" id="trainerModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('trainerModal')">&times;</span>
+      <img id="modalTrainerImg" src="" alt="Trainer" style="max-height: 250px; object-fit: cover;">
+      <h3 id="modalTrainerName" style="color: #ff0; font-size: 22px; margin-bottom: 5px;">Trainer Name</h3>
+      <p id="modalTrainerRole" style="color: #aaa; font-size: 14px; margin-bottom: 15px; font-weight: 600;">Role</p>
+      <p id="modalTrainerBio" style="color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 20px;"></p>
+      <a href="index.html#contact" class="modal-btn">Book Consultation</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-col">
+      <div class="logo">PULSE<span>FORGE</span></div>
+      <p style="margin-top: 10px;">Forging elite strength and resilience with cutting-edge equipment and dedicated coaches.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Locations</h3>
+      <p><strong>HQ:</strong> 104 Iron Works Plaza, NY 10001</p>
+      <p style="margin-top: 8px;"><strong>Annex:</strong> 520 Forge Blvd, Brooklyn 11201</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Primary Desk</h3>
+      <p>Phone: <a href="tel:+18007853674">+1 (800) 785-3674</a></p>
+      <p>Email: <a href="mailto:contact@pulseforgegym.com">contact@pulseforgegym.com</a></p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Alternative Channels</h3>
+      <p>WhatsApp: <a href="https://wa.me/15557853674" target="_blank" rel="noopener noreferrer">+1 (555) 785-3674</a></p>
+      <p>Helpline: <a href="tel:+15559482831">+1 (555) 948-2831</a></p>
+      <p>Support: <a href="mailto:support@pulseforgegym.com">support@pulseforgegym.com</a></p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Pulse Forge. All rights reserved. | <a href="index.html" style="color: #ff0;">Return to Main Website</a></p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+    }
+
+    // Modals
+    function openPlanModal(title, price, desc) {
+      document.getElementById('modalPlanTitle').innerText = title;
+      document.getElementById('modalPlanPrice').innerText = price;
+      document.getElementById('modalPlanDesc').innerText = desc;
+      document.getElementById('planModal').style.display = 'flex';
+    }
+
+    function openTrainerModal(name, role, img, bio) {
+      document.getElementById('modalTrainerName').innerText = name;
+      document.getElementById('modalTrainerRole').innerText = role;
+      document.getElementById('modalTrainerImg').src = img;
+      document.getElementById('modalTrainerBio').innerText = bio;
+      document.getElementById('trainerModal').style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
